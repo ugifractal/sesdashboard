@@ -1,5 +1,5 @@
 # Executables (local)
-DOCKER_COMP = docker compose
+DOCKER_COMP = docker-compose
 
 # Docker containers
 PHP_CONT = $(DOCKER_COMP) exec php-fpm
@@ -13,7 +13,7 @@ GEN_DB_PASS       = $(shell xxd -l10 -ps /dev/urandom)
 GEN_APP_SECRET    = $(shell xxd -l16 -ps /dev/urandom)
 
 up: # Start application
-	$(DOCKER_COMP) up -d
+	$(DOCKER_COMP) --env-file .env.docker up -d
 
 down: # Stop application
 	@$(DOCKER_COMP) down --remove-orphans
