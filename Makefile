@@ -16,7 +16,7 @@ up: # Start application
 	$(DOCKER_COMP) --env-file .env.docker up -d
 
 down: # Stop application
-	@$(DOCKER_COMP) down --remove-orphans
+	@$(DOCKER_COMP) --env-file .env.docker down --remove-orphans
 
 restart: down up # Restart application
 
